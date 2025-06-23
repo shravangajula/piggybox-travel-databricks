@@ -1,0 +1,25 @@
+# Mock destination data (tags, cost, rating)
+Step 1:
+from pyspark.sql import Row
+
+# Sample destination data
+destinations_data = [
+    Row(destination="bali", country="indonesia", cost_level="low", popular_tags="beaches;adventure", season_rating=8, safety_score=7),
+    Row(destination="goa", country="india", cost_level="low", popular_tags="beaches;nightlife", season_rating=9, safety_score=6),
+    Row(destination="manali", country="india", cost_level="medium", popular_tags="mountains;adventure", season_rating=7, safety_score=8),
+    Row(destination="paris", country="france", cost_level="high", popular_tags="art;culture;history", season_rating=6, safety_score=9),
+    Row(destination="santorini", country="greece", cost_level="high", popular_tags="beaches;romantic", season_rating=8, safety_score=8),
+    Row(destination="dubai", country="uae", cost_level="medium", popular_tags="nightlife;shopping", season_rating=9, safety_score=7)
+]
+
+dest_df = spark.createDataFrame(destinations_data)
+
+# Save as CSV to DBFS
+dest_df.write.mode("overwrite").saveAsTable("piggybox_destinations")
+
+print("✅ destinations.csv created.")
+
+Step 2:
+dest_raw = spark.table("piggybox_destinations")
+
+dest_raw.write.mode("overwrite").format("delta").saveAsTable("bronze_destinations")
