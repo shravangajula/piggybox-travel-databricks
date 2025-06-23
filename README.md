@@ -18,11 +18,11 @@ Destinations are scored based on **tag overlap** and **budget compatibility**, a
 ## 🏗️ Architecture Overview
 
 CSV Mock Data (Users, Destinations)
-↓
+→
 Bronze Layer (Raw Delta Tables)
-↓
+→
 Silver Layer (Cleaned & Enriched)
-↓
+→
 Gold Layer (Scored Recommendations)
 
 
