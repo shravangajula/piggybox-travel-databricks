@@ -1,3 +1,4 @@
+# Mock user data (interests, history, budget)
 Step 1:
 from pyspark.sql import SparkSession
 from pyspark.sql import Row
