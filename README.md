@@ -25,27 +25,6 @@ Silver Layer (Cleaned & Enriched)
 →
 Gold Layer (Scored Recommendations)
 
-
----
-
-## 📁 Folder Structure
-
-piggybox-travel-databricks/
-│
-├── notebooks/
-│ ├── 01_bronze_layer_ingestion.py # Load raw data and save as bronze Delta tables
-│ ├── 02_silver_layer_transformations.py # Clean and explode interest/tag columns
-│ └── 03_gold_user_recommendations.py # Match users to destinations and score
-│
-├── data/
-│ ├── users_mock.csv # Mock user data (interests, travel history)
-│ └── destinations.csv # Mock destination data (tags, cost, safety)
-│
-├── README.md
-└── LICENSE
-
-
-
 ---
 
 ## 📊 Features
