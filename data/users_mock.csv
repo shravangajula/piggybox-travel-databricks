@@ -1,0 +1,27 @@
+Step 1:
+from pyspark.sql import SparkSession
+from pyspark.sql import Row
+
+# Sample user data
+users_data = [
+    Row(user_id=1, age=28, budget="low", interests="beaches;food", travel_history="thailand;goa"),
+    Row(user_id=2, age=35, budget="medium", interests="mountains;history", travel_history="manali"),
+    Row(user_id=3, age=22, budget="low", interests="nightlife;adventure", travel_history="bali"),
+    Row(user_id=4, age=41, budget="high", interests="art;culture", travel_history="europe"),
+    Row(user_id=5, age=30, budget="medium", interests="beaches;adventure", travel_history="sri lanka")
+]
+
+
+
+users_df = spark.createDataFrame(users_data)
+
+# Save as CSV to DBFS
+users_df.write.mode("overwrite").saveAsTable("piggybox_users")
+
+print("✅ users_mock.csv created.")
+
+Step 2:
+users_raw = spark.table("piggybox_users")
+
+users_raw.write.mode("overwrite").format("delta").saveAsTable("bronze_users")
+
